@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const prefix = '&';
+const prefix = '#';
 const axios = require('axios');
 const fs = require('fs');
 const ms = require('ms');
@@ -13,7 +13,7 @@ const request = require('request');
 const fetchVideoInfo = require('youtube-info');
 const ytApiKey = 'AIzaSyAdORXg7UZUo7sePv97JyoDqtQVi3Ll0b8';
 const youtube = new YouTube(ytApiKey);
-const devs = ['202745501345382400', '461766920400535552', '202745501345382400', '461766920400535552', '202745501345382400', '202745501345382400'];
+const devs = ['347379495528824832'];
 
 var cooldownGames = new Set();
 var cooldownSurvival = new Set();
@@ -464,7 +464,7 @@ client.on('message', message => {
 
 
       client.on("message", message => {
-    if (message.content.toLowerCase() === prefix + "مساعدة") {
+    if (message.content.toLowerCase() === prefix + "help") {
         message.delete(5000)
         if(!message.channel.guild) return;
         const e = new Discord.RichEmbed()
@@ -524,7 +524,7 @@ Number of games [ 10 ] عدد الألعاب
 
 مبرمج البوت | Developers
 
-[ <@202745501345382400> ]
+[ <@347379495528824832> ]
 
 :copyright: 2018 كودز | Codes
 
@@ -538,94 +538,4 @@ Number of games [ 10 ] عدد الألعاب
    });
 
    
-      client.on("message", message => {
-    if (message.content.toLowerCase() === prefix + "مساعده") {
-        message.delete(5000)
-        if(!message.channel.guild) return;
-        const e = new Discord.RichEmbed()
-        .setColor('#36393e')
-        .setTitle('Check Your DM’s | انظر الى الخاص')
-     const embed = new Discord.RichEmbed()
-         .setColor('#36393e')
-         .setTitle('')
-         .setURL('')
-         .setDescription(`
- **
-الأوامر | Commands
-
-البرفكس الخاص بالبوت [ # ] Bot Prefix
-
-لعرض النقاط الخاصة بك [ #points - #نقاطي ] To display your points
-
-قائمة المتصدرين للسيرفر [ #top - #توب ] Guild Leaderboard ( قريبا | Comming Soon )
-
-قائمة المتصدرين في كافة السيرفرات [ #gtop - #الأفضل ] Global Leaderboardoard ( قريبا | Comming Soon )
-
-Number of games [ 10 ] عدد الألعاب
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-الألعاب
-
-#فكك | #spelling
-
-#سرعه | #type
-
-#عواصم | #captials
-
-#لغز | #puzzle
-
-#سؤال | #question ( قريبا | Comming Soon )
-
-#ايموجي | #emoji
-
-#علم | #flags
-
-#ترجم | #translate ( قريبا | Comming Soon )
-
-#اعكس | #reverse ( قريبا | Comming Soon )
-
-#احسب | #maths
-
-#انمي | #anime
-
-#pubg | ببجي
-
-سيرفر الرئيسي | Offical Server [  ]
-
-سيرفر الدعم الفني | Support Server [ :support: ]
-
-▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-
-مبرمج البوت | Developers
-
-[ <@202745501345382400> ]
-
-:copyright: 2018 كودز | Codes
-
-[ We will support fully English language Coming soon ]
- **
-`)
-   message.channel.send(e).then(m => m.delete(5000))
-   message.author.sendEmbed(embed).catch(error => message.reply(':cry: Your DM’s is CLosed | خاصك مغلق :cry:'))
-   
-   }
-   });
-   
-client.on('message', message => {
-      if(message.author.bot) return;
-if (message.content.startsWith(prefix + 'توب')) {
-    let _top = 1;
-     let topp = Object.values(points);
- let top = topp.slice(0, 10).map(users => `**\`.${_top++}\` <@${users.id}> \`| ${users.points}\`**`).sort((a, b) => a > b).join('\n');
-    const prefixlor = new Discord.RichEmbed()
-      .setTitle("LeaderBoard")
-      .setAuthor(client.user.username, client.user.avatarURL)
-      .setDescription(top,true)
-      .setColor('#36393e')
-   
-  	message.channel.sendEmbed(prefixlor)
-}
-  
-});
 client.login(process.env.BOT_TOKEN);
